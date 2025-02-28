@@ -1,5 +1,5 @@
 const BIN_ID = '67c116dbad19ca34f813d134';
-const API_KEY = '67c116dbad19ca34f813d134';
+const API_KEY = '$2a$10$k/WrCeOiHPNmJbZM/ZOLJuYFNeUgbkopL94mSetqKQGiowSgPDnwq';
 const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
 document.getElementById('item-form').addEventListener('submit', async (e) => {
