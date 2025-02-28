@@ -146,4 +146,4 @@ async function deleteItem(index) {
 }
 
 // Initial fetch
-fetch
+fetchItems();
