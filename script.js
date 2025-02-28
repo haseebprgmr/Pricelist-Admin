@@ -5,8 +5,17 @@ const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 // Fetch items from JSONBin
 async function fetchItems() {
   try {
-    const items = await getItems();
-    displayItems(items);
+    const response = await fetch(API_URL, {
+      headers: { 'X-Master-Key': API_KEY }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Fetched items:', data.record);
+    displayItems(data.record);
   } catch (error) {
     console.error('Error fetching items:', error);
   }
@@ -137,4 +146,4 @@ async function deleteItem(index) {
 }
 
 // Initial fetch
-fetchItems();
+fetch
