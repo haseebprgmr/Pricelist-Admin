@@ -15,6 +15,11 @@ async function fetchItems() {
 // Display items in the admin panel
 function displayItems(items) {
   const itemList = document.getElementById('admin-item-list');
+  if (!itemList) {
+    console.error('Element with ID "admin-item-list" not found.');
+    return;
+  }
+
   itemList.innerHTML = items.map((item, index) => `
     <div class="bg-white p-4 rounded shadow mb-4">
       <h2 class="text-xl font-bold">${item.name}</h2>
