@@ -3,15 +3,21 @@ const API_KEY = '$2a$10$k/WrCeOiHPNmJbZM/ZOLJuYFNeUgbkopL94mSetqKQGiowSgPDnwq'; 
 const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
 // Fetch items from JSONBin
-async function fetchItems() {
-  try {
-    const response = await fetch(API_URL, {
-      headers: { 'X-Master-Key': API_KEY }
-    });
-    const data = await response.json();
-    displayItems(data.record);
-  } catch (error) {
-    console.error('Error fetching items:', error);
+fetch("https://api.jsonbin.io/v3/b/YOUR_BIN_ID", {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    "X-Master-Key": "YOUR_SECRET_KEY"
+  },
+  body: JSON.stringify({
+    items: [
+      { "name": "Product A", "price": 12.99, "price_per_kg": 25.98, "price_per_unit": 1.30 },
+      { "name": "Product B", "price": 6.49, "price_per_kg": 13.98, "price_per_unit": 0.65 }
+    ]
+  })
+  .then(response => response.json())
+  .then(data => console.log("Updated:", data))
+  .catch(error => console.error("Error:", error));
   }
 }
 
